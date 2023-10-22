@@ -1,1 +1,8 @@
 # Detectarea-conturului-automat-a-nodulilor-limfatici-de-pe-imagini-ecografice
+
+“Detectarea nodulilor conturului limfatici de pe imaginile ecografice“ este o aplicație dezvoltată în mediul de lucru MATLAB si are ca scop detectarea conturului automat a unui nodul limfatic de pe o imagine ecografica. Mai mult, vom vedea dacă pacientul prezintă urme de apariție a cancerului, urmărind o stare benignă (sănătoasă) a nodulului sau una malignă (cu tentă de apariție a bolii respective). 
+Exista criterii pentru a determina starea nodulului respectiv si ne vom folosi de grosimea lui pe imagine (o grosime mai mare de 7 mm marchează o formă malignă, iar una sub 7 mm arată o formă benignă) și forma conturului din imagine.
+
+Pe baza unui număr de imagini ecografice, vom folosi metode de binarizare, dilatare si eroziune a imaginii si detectarea a pixelilor care conțin informațiile respective. Ca algoritmi, se pot folosi algoritmul 'K-Means' si 'Active Contour' (algoritm care ajuta sa detectam un contur cat mai precis al unui contur automat, dar vom avea nevoie de o masca rezultata din metodele utilizate anterior pentru a-l folosi si ajusta). Obtinerea mastii se va baza pe metode de binarizare, dilatare, eroziune, K-Means, apoi urmand cu 'Active Contour sa detectam un contur cat mai precis, ajustand dupa cativa parametrii specifici ai sai. 
+
+Aplicația va avea cu o interfață grafică, simplă și facilă pentru utilizator, dezvoltată în App Designer, care este un mediu de dezvoltare interactiv pentru proiectarea aspectului unei aplicații și programarea comportamentului acesta, dezvoltata de MATLAB.
