@@ -34,6 +34,7 @@ appliedClustedImage = labeloverlay(resizedImage, clustedImageWithKmeans); % adau
 figure(4), imshow(appliedClustedImage),
 title(['Clustered image with ', num2str(numberColors), ' numColors']); % afisam imaginea clusterizata
 
+%%% Pentru ACTIVE CONTUR imaginea de segmentat
 clusteredFinalImage = rgb2gray(appliedClustedImage); % transformam volum 3d (spatiu de culori) in 2d pentru a o utiliza mai departe
 figure(5), imshow(clusteredFinalImage),
 title('Final Clustered Image converted in 2D');
@@ -83,7 +84,7 @@ detectedContourOnCroppedImage = labeloverlay(croppedImage, bwFinalResult);
 figure(12), imshow(detectedContourOnCroppedImage), title('Detected contour overlaying on Cropped Image'); % suprapunem perimetrele gasite peste imaginea cropata
 
 % Extract objects from binary image by descending size
-extractedObjectFromBwFinalResult = bwareafilt(bwFinalResult, 5);
+extractedObjectFromBwFinalResult = bwareafilt(bwFinalResult, 4);
 figure(13), imshow(extractedObjectFromBwFinalResult), title('Extracted objects from binary image by size');
 
 % Display detected contour after eliminating small object on Cropped Image
@@ -95,7 +96,7 @@ labelOfBWResult = bwlabel(extractedObjectFromBwFinalResult); % Label connected c
 
 % Detecting white shapes
 bwResult = bwFinalResult; % copy of binary image bwFinalResult
-bwResult(labelOfBWResult~=2 & labelOfBWResult~=3 & labelOfBWResult~=4 & labelOfBWResult~=5) = 0;
+bwResult(labelOfBWResult~=2 & labelOfBWResult~=3 & labelOfBWResult~=4) = 0;
 % put '0' black in points of clusters 2,3,4 from labelOfBWResult
 
 % Display extracted shapes
@@ -365,10 +366,10 @@ P_maxX = [maxX, yInMaxX];
 [minX, indexOfYinMinX] = min(positionOfCoordinatesOfContour(:, 2));
 yInMinX = positionOfCoordinatesOfContour(indexOfYinMinX, 1);
 P_minX = [minX, yInMinX];
-
+%
 % The length in mm of each axis that compute the shape
-lengthOnYaxis = norm(P_minY - P_maxY) / 10; %1 segment are 10 mm 48.8 pixeli 
-lengthOnXaxis = norm(P_minX - P_maxX) / 13;
+lengthOnYaxis = norm(P_minY - P_maxY) / 12; % 1 segment are 10 mm 48.8 pixeli 
+lengthOnXaxis = norm(P_minX - P_maxX) / 12;
 
 
 figure(29), imshow(croppedImage), hold on; %aici sa intreb
